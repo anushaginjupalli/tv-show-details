@@ -7,19 +7,20 @@ import AllShowsComponent from '../components/AllShowsComponent.vue';
 Vue.use(VueRouter)
 const routes = [
 	{
+		path: '/',
+		name: 'Home',
+		component: HomePageComponent,
+	},
+	{
 		path: '/showdetails/:id',
 		name: 'ShowDetails',
 		component: ShowDetailsComponent,
 	},
 	{
 		path: '/AllShows/:Genre',
+		name: 'AllShows',
 		component: AllShowsComponent,
-	},
-	{
-		path: '/',
-		name: 'Home',
-		component: HomePageComponent,
-	},
+	},	
 	{
 		path: '/:catchAll(.*)',
 		redirect: '/',

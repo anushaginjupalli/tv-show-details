@@ -36,7 +36,7 @@ import { mapState, mapActions } from 'vuex';
 				else{					
 					this.getSearchValue(true)														
 					for (let i = 0; i < this.searchShowList.length; i++) {						
-					this.searchResults.push(this.searchShowList[i].show);
+						this.searchResults.push(this.searchShowList[i].show);
 					}					
 					this.searchResults.sort(function(a, b) {
 						return b.rating.average - a.rating.average;

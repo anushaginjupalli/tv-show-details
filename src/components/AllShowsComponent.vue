@@ -16,7 +16,7 @@
 					</div>
 				</div>
 			</div>
-			<div v-if="genre == 'Top 50'" class="row">
+			<div v-if="genre === 'Top 50'" class="row">
 				<div
 					class="col-6 col-sm-4 col-md-3 col-lg-2"
 					v-for="show in topRatedShows"
@@ -45,7 +45,7 @@
 				v-for="(genrelist, index) in showsListByGenre"
 				:key="index"
 			>
-				<div class="row" v-if="genrelist.genre == genre">					
+				<div class="row" v-if="genrelist.genre === genre">					
 					<div
 						class="col-6 col-sm-4 col-md-3 col-lg-2"
 						v-for="show in genrelist.showsList"
@@ -116,9 +116,9 @@
 		created: function() {
 			// check is valid genre or not		
 			this.genre = this.$route.params.Genre;			
-			if(this.genre == 'Action' || this.genre == 'Crime' 
-			|| this.genre == 'Horror' || this.genre=='Romance' 
-			|| this.genre =='Drama' || this.genre == 'Sci-Fi' || this.genre =='Top 50'){				
+			if(this.genre === 'Action' || this.genre === 'Crime' 
+			|| this.genre === 'Horror' || this.genre=== 'Romance' 
+			|| this.genre === 'Drama' || this.genre === 'Sci-Fi' || this.genre === 'Top 50'){				
 				this.isValidGenre = true
 			}
 			else{				

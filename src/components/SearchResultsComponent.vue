@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div class="container mb">
 		<div class="row" v-if="searchResultsList.length > 0">
@@ -19,7 +17,7 @@
 						<b>Rating: {{ show.rating.average }}/10</b>
 					</p>
 				</div>
-				<div v-else-if="!show.image && show.rating.average == null">
+				<div v-else-if="!show.image && show.rating.average === null">
 					<p align="center" class="text-style text-size img-not-margin">
 						Image and rating not available for <b> {{ show.name }}</b>
 					</p>

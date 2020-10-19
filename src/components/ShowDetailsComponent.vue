@@ -42,13 +42,13 @@
 						</p>
 						<p class="show-font" v-else><b> Rating not available</b></p>
 						<p class="show-font" align="left">
-							<b>Seasons : </b>{{ noofseasons }}
+							<b>Seasons : </b>{{ noOfSeasons }}
 						</p>
 					</div>
 				</div>
 				<div>
 					<ul class="nav nav-tabs nav-justified" id="myTab">
-						<li class="nav-item" v-for="season in SeasonDetails" :key="season.id">
+						<li class="nav-item" v-for="season in seasonDetails" :key="season.id">
 							<a								
 								:class="season.number ===1?'nav-link active': 'nav-link'"
 								data-toggle="tab"
@@ -61,20 +61,20 @@
 				<div class="tab-content" id="myTabContent">
 					<div						
 						:class="number === 1? 'tab-pane fade show active': 'tab-pane fade'"
-						v-for="number in SeasonDetails.length"
+						v-for="number in seasonDetails.length"
 						:key="number"
 						:id="'season' + number" 
 					>
 						<div class="row">
 							<div
-								v-for="(episode, index) in episodedetails"
+								v-for="(episode, index) in episodeDetails"
 								:key="episode.id"
 								:class="
 									episode.season === number ? 'col-md-3 col-sm-3 col-xs-3' : ''
 								"								
 								style="margin-top:20px;text-align: left;" 
 							>
-								<div class="show-font episode-align" v-if="episode.season == number">  
+								<div class="show-font episode-align" v-if="episode.season === number">  
 									<div v-if="episode.image">
 									<img
 						:src="episode.image.original"
@@ -119,17 +119,17 @@ import { mapState } from 'vuex';
 		},
 		data() {
 			return {
-				showdetailsURL: '/shows/' + this.$route.params.id,
-				showseasonsURL:
+				showDetailsURL: '/shows/' + this.$route.params.id,
+				showSeasonsURL:
 					'/shows/' + this.$route.params.id + '/seasons',
-				showepisodesURL:
+				showEpisodesURL:
 					'/shows/' + this.$route.params.id + '/episodes',
 				oneShowDetails: {},
 				isValidID: false,
-				SeasonDetails: [],
-				noofseasons: null,
-				noofepisodes: null,
-				episodedetails: [],
+				seasonDetails: [],
+				noOfSeasons: null,
+				noOfEpisodes: null,
+				episodeDetails: [],
 			};
 		},
 		computed: {...mapState(['allShowsList', 'searchResultsList'])},
@@ -137,24 +137,24 @@ import { mapState } from 'vuex';
 			// get selected show details
 			async getShowDetails() {		
 				const res = await tvShowsServices.getRequestDetails(
-						this.showdetailsURL)							
-						if(!res.data){
-							this.isValidID = false
-							return
-						}						
-					else{
-						this.isValidID = true
+					this.showDetailsURL)							
+				if(!res.data){
+					this.isValidID = false
+					return
+				}						
+				else{
+					this.isValidID = true
 					this.oneShowDetails = res.data;
-					const seasonresponse = await tvShowsServices.getRequestDetails(
-						this.showseasonsURL
+					const seasonResponse = await tvShowsServices.getRequestDetails(
+						this.showSeasonsURL
 					);
-					this.SeasonDetails = seasonresponse.data;
-					const episoderesponse = await tvShowsServices.getRequestDetails(
-						this.showepisodesURL
+					this.seasonDetails = seasonResponse.data;
+					const episodeResponse = await tvShowsServices.getRequestDetails(
+						this.showEpisodesURL
 					);
-					this.episodedetails = episoderesponse.data;					
-					this.noofseasons = this.SeasonDetails.length					
-					this.noofepisodes = this.SeasonDetails[0].episodeOrder;					
+					this.episodeDetails = episodeResponse.data;					
+					this.noOfSeasons = this.seasonDetails.length					
+					this.noOfEpisodes = this.seasonDetails[0].episodeOrder;					
 				}
 			},
 			// redirect to home

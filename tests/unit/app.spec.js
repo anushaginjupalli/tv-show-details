@@ -11,10 +11,6 @@ describe('In App Component', () => {
     });
   });
 
-  // afterEach(() => {
-  //   appWrapper.destroy();
-  // });
-
   it('is a Vue instance', () => {
     expect(appWrapper.isVueInstance).toBeTruthy();
   });

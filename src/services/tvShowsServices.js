@@ -7,12 +7,12 @@ export default {
 			url: URL,
 			method: 'get'			
 		})
-			.then((response) => {										
-				return response;
-			})			
-			.catch((error)=> {				
-				return error
-			})
+		.then((response) => {										
+			return response;
+		})			
+		.catch((error)=> {				
+			return error
+		})
 		return res;
 	},		
 };

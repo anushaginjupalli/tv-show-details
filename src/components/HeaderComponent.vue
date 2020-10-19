@@ -17,10 +17,10 @@
 	</div>
 </template>
 <style scoped>
-#header {
-	background-color: powderblue;
-	padding: 4px;
-}
+	#header {
+		background-color: powderblue;
+		padding: 4px;
+	}
 	.title-style {
 		font-family: cursive;
 		color: darkblue;
