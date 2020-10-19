@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div class="mrl-15 mb">
 		<div v-if="isValidID">
@@ -51,8 +49,8 @@
 				<div>
 					<ul class="nav nav-tabs nav-justified" id="myTab">
 						<li class="nav-item" v-for="season in SeasonDetails" :key="season.id">
-							<a
-								class="nav-link"
+							<a								
+								:class="season.number ===1?'nav-link active': 'nav-link'"
 								data-toggle="tab"
 								:href="'#season' + season.number"
 								>Season {{ season.number }}</a
@@ -61,8 +59,8 @@
 					</ul>
 				</div>
 				<div class="tab-content" id="myTabContent">
-					<div
-						class="tab-pane fade"
+					<div						
+						:class="number === 1? 'tab-pane fade show active': 'tab-pane fade'"
 						v-for="number in SeasonDetails.length"
 						:key="number"
 						:id="'season' + number" 

@@ -56,19 +56,21 @@
 	</div>
 </template>
 <script>
-import { mapState } from 'vuex';
-	/* eslint-disable */
+import { mapActions, mapState } from 'vuex';	
 	export default {
-computed: {...mapState(['searchResultsList'])},
+		computed: {...mapState(['searchResultsList'])},
 		methods: {
+			...mapActions([
+				'getSearchValue'
+			]),
 			// redirect to show details
 			goShowDetails(id) {
-				this.$store.commit('SET_IS_SEARCH', false)				
+				this.getSearchValue(false)				
 				this.$router.push('/showdetails/' + id);
 			},
 			// redirect to home page
 			goToHome() {
-				this.$store.commit('SET_IS_SEARCH', false)
+				this.getSearchValue(false)
 				this.$router.push('/');
 			}
 		}

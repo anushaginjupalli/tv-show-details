@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div id="footer">
 		<div class="container">

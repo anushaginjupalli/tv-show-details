@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div class="container">
 		<div class="row">
@@ -15,8 +13,8 @@
 	</div>
 </template>
 <script>
-import { mapState } from 'vuex';
-	import store from '../store/index.js';
+import { mapState, mapActions } from 'vuex';
+	// import store from '../store/index.js';
 	export default {
 		data() {
 			return {
@@ -25,23 +23,25 @@ import { mapState } from 'vuex';
 		},
 		computed: {...mapState(['searchValue', 'searchShowList'])},
 		methods: {
+			...mapActions([
+				'getTopShowsbySearch', 'getSearchValue', 'getSearchResult'
+			]),
 			// get shows details by search
 			async getDatabySearch() {		
-				this.searchResults = []						
-				this.$store.commit('SET_SEARCH_VALUE', this.$refs.search.value)
-				await store.dispatch('getTopShowsbySearch');
+				this.searchResults = []										
+				await this.getTopShowsbySearch(this.$refs.search.value);
 				if(this.searchValue===''){
-					this.$store.commit('SET_IS_SEARCH', false)
+					this.getSearchValue(false)					
 				}							
 				else{					
-					this.$store.commit('SET_IS_SEARCH', true)															
+					this.getSearchValue(true)														
 					for (let i = 0; i < this.searchShowList.length; i++) {						
 					this.searchResults.push(this.searchShowList[i].show);
 					}					
 					this.searchResults.sort(function(a, b) {
-				return b.rating.average - a.rating.average;
-			});
-					this.$store.commit('SET_SEARCH_RESULTS_LIST', this.searchResults)
+						return b.rating.average - a.rating.average;
+					});
+					this.getSearchResult(this.searchResults)
 				}				
 			},
 		},

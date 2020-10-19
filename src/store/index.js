@@ -1,6 +1,3 @@
-/** @format */
-/* eslint-disable */
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutation'

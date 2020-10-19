@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Vuex from 'vuex';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import SearchResultsComponent from '@/components/SearchResultsComponent.vue';

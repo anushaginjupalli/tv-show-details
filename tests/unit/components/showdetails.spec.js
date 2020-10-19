@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Vuex from 'vuex';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ShowDetailsComponent from '@/components/ShowDetailsComponent.vue';

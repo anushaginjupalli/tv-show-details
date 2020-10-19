@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div id="header">
 		<div class="row">

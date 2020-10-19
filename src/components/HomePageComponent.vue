@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
 	<div class="mrl-15 mb">
 		<SearchComponent></SearchComponent>		
@@ -33,7 +31,7 @@
 	import SearchComponent from './SearchComponent';
 	import SearchResultsComponent from './SearchResultsComponent';
 	import tvShowsServices from '../services/tvShowsServices.js';
-	import { mapState } from 'vuex';
+	import { mapActions, mapState } from 'vuex';
 	export default {
 		name: 'HomePageComponent',
 		components: {
@@ -75,6 +73,9 @@
 		},
 		computed: {...mapState(['allShowsList', 'showsListByGenre', 'topRatedShows', 'searchResultsList', 'isSearch'])},
 		methods:{
+			...mapActions([
+				'getTopRatedbyGenre', 'getShowslist'
+			]),
 			//get the shows list by genre
 			getShowsListByGenre(){
 				for (let i = 0; i < this.allShowsList.length; i++) {								
@@ -105,19 +106,17 @@
 			this.listByGenre[l].showsList.sort(function(a, b) {
 				return b.rating.average - a.rating.average;
 			});
-		}
-		this.$store.commit('SET_SHOWS_LIST_BY_GENRE', this.listByGenre)		
+		}		
 		this.allShowsList.sort(function(a, b) {
 				return b.rating.average - a.rating.average;
 			});
 		this.topRated = this.allShowsList.slice(0,49);
-		this.$store.commit('SET_TOP_RATED_SHOWS', this.topRated)
+		this.getShowslist({"genrelist": this.listByGenre, "toplist": this.topRated})		
 		}
 		},
 		created: function() {									
-			this.$store.dispatch('getTopRatedbyGenre');		
-			this.getShowsListByGenre();				
-			
+			this.getTopRatedbyGenre();
+			this.getShowsListByGenre();										
 		}
 	};
 </script>

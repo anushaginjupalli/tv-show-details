@@ -1,9 +1,3 @@
-/**
- * /* eslint-disable
- *
- * @format
- */
-
 import axios from 'axios';
 
 export default {

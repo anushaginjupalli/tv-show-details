@@ -4,10 +4,10 @@ module.exports = {
   collectCoverageFrom: [
     "**/*.{js,vue}",
     "!**/node_modules/**",
+    "!**/*.config.js",
     "!**/vendor/**",
-    "!**/main.js/**",
+    "!**/main.js",
     "!**/coverage/**",
-    "!**/*.config.js/**",
     "!**/tests/e2e/**",
   ],
   coverageThreshold: {
