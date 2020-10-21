@@ -40,12 +40,7 @@ const actions = {
 		const episoderes = await tvShowsServices.getRequestDetails(
 					'/shows/' + state.showId + '/episodes')		
 		commit('SET_EPISODE_DETAILS', episoderes.data);
-	},
-	// make API call for episode details
-	// async getEpisodeDetails ( { commit, state } )
-	// {		
-							
-	// },
+	},	
 	// get the shows list by genre
 	getShowslist ( { commit }, value )
 	{	

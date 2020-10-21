@@ -26,9 +26,9 @@
 				'getTopShowsbySearch', 'getSearchResult'
 			]),
 			// get shows details by search
-			async getDatabySearch() {		
-				this.searchResults = []								
+			async getDatabySearch() {														
 				await this.getTopShowsbySearch(this.$refs.search.value);
+				this.searchResults = []
 				if(this.searchShowList.length > 0){								
 					this.searchShowList.forEach((searchShow)	=> {					
 						this.searchResults.push(searchShow.show);
