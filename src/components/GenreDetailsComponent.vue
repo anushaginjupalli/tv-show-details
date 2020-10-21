@@ -11,7 +11,7 @@
 				</h2>
 			</div>
 			<div class="col-6 col-sm-6 col-md-4 col-lg-3 text-right text-display">
-				<button tyle="button" @click="getShowsListbyGenre">
+				<button type="button" @click="getShowsListbyGenre">
 					All {{ genre }} shows
 				</button>
 			</div>
@@ -21,8 +21,8 @@
 		<div class="row">
 			<div
 				class="col-6 col-sm-4 col-md-3 col-lg-2"
-				v-for="show in showdetails.slice(0, 6)"
-				:key="show.id"
+				v-for="(show, index) in showdetails.slice(0, 6)"
+				:key="index"
 			>
 				<img
 					v-if="show.image"
@@ -30,12 +30,12 @@
 					:alt="show.name"
 					@click="goShowDetails(show.id)"
 					class="image-size"
-				/>
-				<b
-					><p class="text-style text-size">
+				/>				
+					<p class="text-style text-size">
+						<b>
 						Rating: {{ show.rating.average }}/10
-					</p></b
-				>
+						</b>
+					</p>				
 			</div>
 		</div>
 	</div>

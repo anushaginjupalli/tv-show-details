@@ -2,7 +2,7 @@
 	<div id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-self-center">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12 align-self-center">
 					<p class="pd">
 						<b>Copyright@reviewstory India Pvt. Ltd.</b>
 					</p>				

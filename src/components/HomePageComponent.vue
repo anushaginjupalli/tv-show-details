@@ -1,5 +1,5 @@
 <template>
-	<div class="mrl-15 mb">
+	<div class="mrl mb">
 		<SearchComponent></SearchComponent>		
 		<div>
 			<div v-if="!isSearch">
@@ -8,7 +8,7 @@
 					genre="Top 50"					
 				>
 				</GenreDetailsComponent>				
-				<div v-for="genreList in showsListByGenre" :key="genreList.id">
+				<div v-for="(genreList, index) in showsListByGenre" :key="index">
 					<GenreDetailsComponent
 						:showdetails="genreList.showsList"
 						:genre="genreList.genre"						
@@ -37,9 +37,7 @@
 			SearchResultsComponent,
 		},
 		data() {
-			return {	
-				topRated: [],
-								
+			return {								
 				listByGenre: [
 					{
 						genre: 'Action',
@@ -68,7 +66,7 @@
 				],
 			};
 		},
-		computed: {...mapState(['allShowsList', 'showsListByGenre', 'searchResultsList']),
+		computed: {...mapState(['allShowsList', 'showsListByGenre']),
 			...mapGetters(['isSearch'])},
 		methods:{
 			...mapActions([
@@ -100,13 +98,7 @@
 								break;
 						}
 					})
-				})		
-					
-				this.listByGenre.forEach( list => 	{							
-					list.showsList.sort(function(a, b) {
-						return b.rating.average - a.rating.average;
-					})
-				})																		
+				})																													
 				this.getShowslist(this.listByGenre)		
 			}
 		},

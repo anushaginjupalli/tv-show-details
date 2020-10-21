@@ -1,13 +1,13 @@
 <template>
 	<div id="header">
 		<div class="row">
-			<div class="col-xs-5 col-sm-8 col-md-6 col-lg-2  align-self-start">
+			<div class="col-12 col-sm-8 col-md-6 col-lg-2  align-self-start">
 				<h4 class="title-style">
 					<b>ReV!ewStOry</b>
 				</h4>
 			</div>
 			<div
-				class="col-xs-5 col-sm-4 col-md-6 offset-lg-5 col-lg-5 align-self-end"
+				class="col-12 col-sm-4 col-md-6 offset-lg-5 col-lg-5 align-self-end"
 			>
 				<h4 class="header-msg-style">
 					Holla!! take a snoop on top shows

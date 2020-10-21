@@ -82,11 +82,11 @@ describe('In All Shows component', () => {
   });
 
   it('renders the correct markup', () => {
-    expect(allshowsWrapper.html()).toContain('<div class="mrl-15 mb">');
+    expect(allshowsWrapper.html()).toContain('<div class="mrl mb">');
   });
 
-  it('it should have a div element with class="mrl-15 mb"', () => {
-    expect(allshowsWrapper.attributes('class')).toBe('mrl-15 mb');
+  it('it should have a div element with class="mrl mb"', () => {
+    expect(allshowsWrapper.attributes('class')).toBe('mrl mb');
   });
 
   it('It should have a button', () => {

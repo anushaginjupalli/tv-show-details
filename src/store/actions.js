@@ -56,7 +56,7 @@ const actions = {
 		commit('SET_SEARCH_VALUE', value)
 	},
 	//get is valid id
-	getisValid ( { commit }, value )
+	getisValidID ( { commit }, value )
 	{
 		commit('SET_IS_VALID_ID', value)
 	}

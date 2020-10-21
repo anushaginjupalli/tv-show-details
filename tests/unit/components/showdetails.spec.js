@@ -31,11 +31,11 @@ describe('In show details component', () => {
   });
 
   it('renders the correct markup', () => {
-    expect(detailsWrapper.html()).toContain('<div class="mrl-15 mb">');
+    expect(detailsWrapper.html()).toContain('<div class="mrl mb">');
   });
 
-  it('it should have a div element with calss="mrl-15 mb', () => {
-    expect(detailsWrapper.attributes('class')).toBe('mrl-15 mb');
+  it('it should have a div element with calss="mrl mb', () => {
+    expect(detailsWrapper.attributes('class')).toBe('mrl mb');
   });
 
   it('It should have a button', () => {

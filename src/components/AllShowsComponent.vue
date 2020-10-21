@@ -1,5 +1,5 @@
 <template>
-	<div class="mrl-15 mb">
+	<div class="mrl mb">
 		<SearchComponent></SearchComponent>		
 		<div v-if="!isSearch && isValidGenre">
 			<div class="container">
@@ -19,8 +19,8 @@
 			<div v-if="genre === 'Top 50'" class="row">
 				<div
 					class="col-6 col-sm-4 col-md-3 col-lg-2"
-					v-for="show in allShowsList.slice(0, 49)"
-					:key="show.id"
+					v-for="(show, index) in allShowsList.slice(0, 49)"
+					:key="index"
 				>
 					<img
 						v-if="show.image"
@@ -48,8 +48,8 @@
 				<div class="row" v-if="genrelist.genre === genre">					
 					<div
 						class="col-6 col-sm-4 col-md-3 col-lg-2"
-						v-for="show in genrelist.showsList"
-						:key="show.id"
+						v-for="(show, index) in genrelist.showsList"
+						:key="index"
 					>
 						<img
 							v-if="show.image"

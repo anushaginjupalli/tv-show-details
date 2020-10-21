@@ -1,5 +1,5 @@
 <template>
-	<div class="mrl-15 mb">
+	<div class="mrl mb">
 		<div v-if="isValidID">
 			<div class="container">
 				<div class="row mb-10">
@@ -15,14 +15,14 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
 						<img
 							v-if="showDetails.image"
 							:src="showDetails.image.original"
 							class="one-image-size mt-10"
 						/>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
 						<p
 							class="show-font"
 							v-html="showDetails.summary"
@@ -48,7 +48,7 @@
 				</div>
 				<div>
 					<ul class="nav nav-tabs nav-justified" id="myTab">
-						<li class="nav-item" v-for="season in seasonDetails" :key="season.id">
+						<li class="nav-item" v-for="(season, index) in seasonDetails" :key="index">
 							<a								
 								:class="season.number ===1?'nav-link active': 'nav-link'"
 								data-toggle="tab"
@@ -68,9 +68,9 @@
 						<div class="row">
 							<div
 								v-for="(episode, index) in episodeDetails"
-								:key="episode.id"
+								:key="index"
 								:class="
-									episode.season === number ? 'col-md-3 col-sm-3 col-xs-3' : ''
+									episode.season === number ? 'col-md-3 col-sm-3 col-12' : ''
 								"								
 								style="margin-top:20px;text-align: left;" 
 							>
@@ -116,12 +116,12 @@
 		computed: {...mapState(['showDetails', 'seasonDetails', 'episodeDetails', 'isValidID'])},
 		methods: {
 			...mapActions([
-				'getShowDetails', 'getSeasonEpisodeDetails', 'getSearchValue', 'getisValid'
+				'getShowDetails', 'getSeasonEpisodeDetails', 'getSearchValue', 'getisValidID'
 			]),
 			// get selected show details
 			async getSelectedShowDetails() {	
 				if(isNaN(this.$route.params.id)){							
-				this.getisValid(false)	
+				this.getisValidID(false)	
 				}
 				else{																
 				await this.getShowDetails(this.$route.params.id)	

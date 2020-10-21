@@ -33,11 +33,11 @@ describe('In Home Page component', () => {
   });
 
   it('renders the correct markup', () => {
-    expect(homePageWrapper.html()).toContain('<div class="mrl-15 mb">');
+    expect(homePageWrapper.html()).toContain('<div class="mrl mb">');
   });
 
   it('it should have a div element with class="container mb"', () => {
-    expect(homePageWrapper.attributes('class')).toBe('mrl-15 mb');
+    expect(homePageWrapper.attributes('class')).toBe('mrl mb');
   });
 
 });
