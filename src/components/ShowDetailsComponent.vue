@@ -5,7 +5,7 @@
 				<div class="row mb-10">
 					<div class="col-12 col-sm-9 col-md-8 col-lg-9">
 						<h2 class="text-style">
-							<b>{{ oneShowDetails.name }} </b> | {{ oneShowDetails.language }}
+							<b>{{ showDetails.name }} </b> | {{ showDetails.language }}
 						</h2>
 					</div>
 					<div
@@ -17,32 +17,32 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 						<img
-							v-if="oneShowDetails.image"
-							:src="oneShowDetails.image.original"
+							v-if="showDetails.image"
+							:src="showDetails.image.original"
 							class="one-image-size mt-10"
 						/>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 						<p
 							class="show-font"
-							v-html="oneShowDetails.summary"
+							v-html="showDetails.summary"
 							align="justify"
 						></p>
 						<p class="show-font" align="left">
 							<b>Genres : </b>
-							<span v-for="(genre, index) in oneShowDetails.genres" :key="index"
+							<span v-for="(genre, index) in showDetails.genres" :key="index"
 								>{{ genre
-								}}<span v-if="index != oneShowDetails.genres.length - 1"
+								}}<span v-if="index != showDetails.genres.length - 1"
 									>,
 								</span></span
 							>
+						</p>						
+						<p class="show-font" align="left" v-if="showDetails.rating">
+							<b>Rating : </b>{{ showDetails.rating.average }}/10
 						</p>
-						<p class="show-font" v-if="oneShowDetails.rating" align="left">
-							<b>Rating : </b>{{ oneShowDetails.rating.average }}/10
-						</p>
-						<p class="show-font" v-else><b> Rating not available</b></p>
+						<p class="show-font" align="left" v-else><b> Rating not available</b></p>
 						<p class="show-font" align="left">
-							<b>Seasons : </b>{{ noOfSeasons }}
+							<b>Seasons : </b>{{ seasonDetails.length }}
 						</p>
 					</div>
 				</div>
@@ -77,14 +77,14 @@
 								<div class="show-font episode-align" v-if="episode.season === number">  
 									<div v-if="episode.image">
 									<img
-						:src="episode.image.original"
-						:alt="episode.name"						
-						class="episode-image-size"
-					/>					
-					</div>
-					<div v-else>
-						<p> image is not available</p>						
-					</div>
+										:src="episode.image.original"
+										:alt="episode.name"						
+										class="episode-image-size"
+									/>					
+								</div>
+								<div v-else>
+									<p> image is not available</p>						
+								</div>
 								<p>	<b>{{ index + 1 }}. {{ episode.name }}</b></p>
 								</div>
 							</div>
@@ -95,75 +95,49 @@
 		</div>
 		<div v-else class="row">
 			<div class="col-12 col-sm-8 col-md-8 col-lg-9">
-			<h2 class="pd-t text-style text-color">No Results found</h2>
+				<h2 class="pd-t text-style text-color">No Results found</h2>
 			</div>
-			<div
-						class="col-12 col-sm-4 col-md-4 col-lg-3 text-left pd-t text-display"
-					>
-						<button type="button" @click="goToHome">Home</button>
-					</div>
+			<div class="col-12 col-sm-4 col-md-4 col-lg-3 text-left pd-t text-display">
+				<button type="button" @click="goToHome">Home</button>
+			</div>
 		</div>
 	</div>
 </template>
 
-<script>
-	/* eslint-disable */
-	import tvShowsServices from '../services/tvShowsServices.js';
-	import SearchResultsComponent from './SearchResultsComponent';
-	import store from '../store/index.js';
-import { mapState } from 'vuex';
+<script>			
+	import { mapState, mapActions } from 'vuex';
 	export default {
-		name: 'ShowDetailsComponent',
-		components: {
-			SearchResultsComponent,
-		},
+		name: 'ShowDetailsComponent',		
 		data() {
-			return {
-				showDetailsURL: '/shows/' + this.$route.params.id,
-				showSeasonsURL:
-					'/shows/' + this.$route.params.id + '/seasons',
-				showEpisodesURL:
-					'/shows/' + this.$route.params.id + '/episodes',
-				oneShowDetails: {},
-				isValidID: false,
-				seasonDetails: [],
-				noOfSeasons: null,
-				noOfEpisodes: null,
-				episodeDetails: [],
+			return {				
+			
 			};
 		},
-		computed: {...mapState(['allShowsList', 'searchResultsList'])},
+		computed: {...mapState(['showDetails', 'seasonDetails', 'episodeDetails', 'isValidID'])},
 		methods: {
+			...mapActions([
+				'getShowDetails', 'getSeasonEpisodeDetails', 'getSearchValue', 'getisValid'
+			]),
 			// get selected show details
-			async getShowDetails() {		
-				const res = await tvShowsServices.getRequestDetails(
-					this.showDetailsURL)							
-				if(!res.data){
-					this.isValidID = false
-					return
-				}						
-				else{
-					this.isValidID = true
-					this.oneShowDetails = res.data;
-					const seasonResponse = await tvShowsServices.getRequestDetails(
-						this.showSeasonsURL
-					);
-					this.seasonDetails = seasonResponse.data;
-					const episodeResponse = await tvShowsServices.getRequestDetails(
-						this.showEpisodesURL
-					);
-					this.episodeDetails = episodeResponse.data;					
-					this.noOfSeasons = this.seasonDetails.length					
-					this.noOfEpisodes = this.seasonDetails[0].episodeOrder;					
+			async getSelectedShowDetails() {	
+				if(isNaN(this.$route.params.id)){							
+				this.getisValid(false)	
 				}
+				else{																
+				await this.getShowDetails(this.$route.params.id)	
+				if(this.isValidID){							
+				this.getSeasonEpisodeDetails()				
+				}	
+				}										
 			},
 			// redirect to home
 			goToHome() {
+				this.getSearchValue('')
 				this.$router.push('/');
 			}
 		},
 		created: function() {
-			this.getShowDetails();
+			this.getSelectedShowDetails();
 		},
 	};
 </script>
@@ -179,8 +153,8 @@ import { mapState } from 'vuex';
 	}
 	.episode-image-size {
 	height: 100px;		
-}
-.episode-align{
+	}
+	.episode-align{
 	text-align: center;
-}
+	}
 </style>

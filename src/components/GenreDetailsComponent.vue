@@ -41,9 +41,7 @@
 	</div>
 	</div>
 </template>
-<script>
-	/* eslint-disable */
-	import store from '../store/index.js';
+<script>	
 	export default {
 		props: ['genre', 'showdetails'],
 		methods: {
@@ -55,7 +53,7 @@
 			getShowsListbyGenre() {
 				this.$router.push('/AllShows/' + this.genre);
 			},
-		},
+		}		
 	};
 </script>
 <style scoped>

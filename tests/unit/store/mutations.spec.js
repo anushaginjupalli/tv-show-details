@@ -19,16 +19,7 @@ describe('In mutations', () => {
     };
     mutations.SET_SHOWS_LIST_BY_GENRE(state, showsListByGenre);
     expect(state.showsListByGenre).toBe(showsListByGenre);
-  });
-
-  it('SET_TOP_RATED_SHOWS mutation should set state.topRatedShows value to topRatedShows', () => {
-    const topRatedShows = [{"id":1,"url":"http://www.tvmaze.com/shows/1/under-the-dome","name":"Under the Dome","type":"Scripted","language":"English","genres":["Drama","Science-Fiction","Thriller"],"status":"Ended","runtime":60,"premiered":"2013-06-24","officialSite":"http://www.cbs.com/shows/under-the-dome/","schedule":{"time":"22:00","days":["Thursday"]},"rating":{"average":6.5},"weight":97,"network":{"id":2,"name":"CBS","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":25988,"thetvdb":264492,"imdb":"tt1553656"},"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"},"summary":"<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>","updated":1573667713,"_links":{"self":{"href":"http://api.tvmaze.com/shows/1"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/185054"}}},{"id":2,"url":"http://www.tvmaze.com/shows/2/person-of-interest","name":"Person of Interest","type":"Scripted","language":"English","genres":["Action","Crime","Science-Fiction"],"status":"Ended","runtime":60,"premiered":"2011-09-22","officialSite":"http://www.cbs.com/shows/person_of_interest/","schedule":{"time":"22:00","days":["Tuesday"]},"rating":{"average":8.9},"weight":95,"network":{"id":2,"name":"CBS","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":28376,"thetvdb":248742,"imdb":"tt1839578"},"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/163/407679.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"},"summary":"<p>You are being watched. The government has a secret system, a machine that spies on you every hour of every day. I know because I built it. I designed the Machine to detect acts of terror but it sees everything. Violent crimes involving ordinary people. People like you. Crimes the government considered \"irrelevant\". They wouldn't act so I decided I would. But I needed a partner. Someone with the skills to intervene. Hunted by the authorities, we work in secret. You'll never find us. But victim or perpetrator, if your number is up, we'll find you.</p>","updated":1588773151,"_links":{"self":{"href":"http://api.tvmaze.com/shows/2"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/659372"}}},]
-    const state = {
-      topRatedShows :[]
-    };
-    mutations.SET_TOP_RATED_SHOWS(state, topRatedShows);
-    expect(state.topRatedShows).toBe(topRatedShows);
-  });
+  });  
 
   it('SET_SEARCH_SHOWS_LIST mutation should set state.searchShowList value to searchShowList', () => {
     const searchShowList = [{"id":1,"url":"http://www.tvmaze.com/shows/1/under-the-dome","name":"Under the Dome","type":"Scripted","language":"English","genres":["Drama","Science-Fiction","Thriller"],"status":"Ended","runtime":60,"premiered":"2013-06-24","officialSite":"http://www.cbs.com/shows/under-the-dome/","schedule":{"time":"22:00","days":["Thursday"]},"rating":{"average":6.5},"weight":97,"network":{"id":2,"name":"CBS","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":25988,"thetvdb":264492,"imdb":"tt1553656"},"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg"},"summary":"<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>","updated":1573667713,"_links":{"self":{"href":"http://api.tvmaze.com/shows/1"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/185054"}}},{"id":2,"url":"http://www.tvmaze.com/shows/2/person-of-interest","name":"Person of Interest","type":"Scripted","language":"English","genres":["Action","Crime","Science-Fiction"],"status":"Ended","runtime":60,"premiered":"2011-09-22","officialSite":"http://www.cbs.com/shows/person_of_interest/","schedule":{"time":"22:00","days":["Tuesday"]},"rating":{"average":8.9},"weight":95,"network":{"id":2,"name":"CBS","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"externals":{"tvrage":28376,"thetvdb":248742,"imdb":"tt1839578"},"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/163/407679.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"},"summary":"<p>You are being watched. The government has a secret system, a machine that spies on you every hour of every day. I know because I built it. I designed the Machine to detect acts of terror but it sees everything. Violent crimes involving ordinary people. People like you. Crimes the government considered \"irrelevant\". They wouldn't act so I decided I would. But I needed a partner. Someone with the skills to intervene. Hunted by the authorities, we work in secret. You'll never find us. But victim or perpetrator, if your number is up, we'll find you.</p>","updated":1588773151,"_links":{"self":{"href":"http://api.tvmaze.com/shows/2"},"previousepisode":{"href":"http://api.tvmaze.com/episodes/659372"}}},]
@@ -48,21 +39,58 @@ describe('In mutations', () => {
     expect(state.searchResultsList).toBe(searchResultsList);
   });
 
-  it('SET_IS_SEARCH mutation should set state.isSearch value to isSearch', () => {
-    const isSearch = true
-    const state = {
-      isSearch: {},
-    };
-    mutations.SET_IS_SEARCH(state, isSearch);
-    expect(state.isSearch).toBe(isSearch);
-  });
-
   it('SET_SEARCH_VALUE mutation should set state.searchValue value to searchValue', () => {
     const searchValue = 'a'
     const state = {
-      searchValue: {},
+      searchValue: '',
     };
     mutations.SET_SEARCH_VALUE(state, searchValue);
     expect(state.searchValue).toBe(searchValue);
-  });
+  } );
+  
+   it('SET_SHOW_ID mutation should set state.showId value to showId', () => {
+    const showId = 1
+    const state = {
+      showId: null,
+    };
+    mutations.SET_SHOW_ID(state, showId);
+    expect(state.showId).toBe(showId);
+   } );
+  
+  it('SET_SHOW_DETAILS mutation should set state.showDetails value to showDetails', () => {
+    const showDetails = { "id": 1, "url": "http://www.tvmaze.com/shows/1/under-the-dome", "name": "Under the Dome", "type": "Scripted", "language": "English", "genres": ["Drama", "Science-Fiction", "Thriller"], "status": "Ended", "runtime": 60, "premiered": "2013-06-24", "officialSite": "http://www.cbs.com/shows/under-the-dome/", "schedule": { "time": "22:00", "days": ["Thursday"] }, "rating": { "average": 6.5 }, "weight": 97, "network": {   "id": 2,   "name": "CBS",   "country":   {     "name": "United States",     "code": "US",     "timezone": "America/New_York"   } }, "webChannel": null, "externals": {   "tvrage": 25988,   "thetvdb": 264492,   "imdb": "tt1553656" }, "image": {   "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg",   "original": "http://static.tvmaze.com/uploads/images/original_untouched/81/202627.jpg" }, "summary": "<p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p>", "updated": 1573667713, "_links": {   "self":   {     "href": "http://api.tvmaze.com/shows/1"   },   "previousepisode":   {     "href": "http://api.tvmaze.com/episodes/185054"   } }} 
+    const state = {
+      showDetails: {},
+    };
+    mutations.SET_SHOW_DETAILS(state, showDetails);
+    expect(state.showDetails).toBe(showDetails);
+  } );
+  
+  it('SET_SEASON_DETAILS mutation should set state.seasonDetails value to seasonDetails', () => {
+    const seasonDetails = [{"id":11,"url":"http://www.tvmaze.com/seasons/11/true-detective-season-1","number":1,"name":"","episodeOrder":8,"premiereDate":"2014-01-12","endDate":"2014-03-09","network":{"id":8,"name":"HBO","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/13/34831.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/13/34831.jpg"},"summary":"<p>In 2012, two homicide investigators of the Louisiana State Police's Criminal Investigations Division - Rustin \"Rust\" Cohle and Martin \"Marty\" Hart - are summoned for questioning by detectives Maynard Gilbough and Thomas Papania over the Dora Lange murder investigation of 1995; they have not seen nor spoken to each other since an altercation concerning Martin's wife Maggie Hart over a decade prior. With many of the old files destroyed in Hurricane Rita, the two men are asked to recount the history of their working relationship, personal lives, and the Dora Lange murder investigation, as well as a series of other related individual cases as new evidence suggests that the perpetrator remains at large.</p>","_links":{"self":{"href":"http://api.tvmaze.com/seasons/11"}}}]
+    const state = {
+      seasonDetails: '',
+    };
+    mutations.SET_SEASON_DETAILS(state, seasonDetails);
+    expect(state.seasonDetails).toBe(seasonDetails);
+  } );
+
+  it('SET_EPISODE_DETAILS mutation should set state.episodeDetails value to episodeDetails', () => {
+    const episodeDetails = [{"id":11,"url":"http://www.tvmaze.com/seasons/11/true-detective-season-1","number":1,"name":"","episodeOrder":8,"premiereDate":"2014-01-12","endDate":"2014-03-09","network":{"id":8,"name":"HBO","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/13/34831.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/13/34831.jpg"},"summary":"<p>In 2012, two homicide investigators of the Louisiana State Police's Criminal Investigations Division - Rustin \"Rust\" Cohle and Martin \"Marty\" Hart - are summoned for questioning by detectives Maynard Gilbough and Thomas Papania over the Dora Lange murder investigation of 1995; they have not seen nor spoken to each other since an altercation concerning Martin's wife Maggie Hart over a decade prior. With many of the old files destroyed in Hurricane Rita, the two men are asked to recount the history of their working relationship, personal lives, and the Dora Lange murder investigation, as well as a series of other related individual cases as new evidence suggests that the perpetrator remains at large.</p>","_links":{"self":{"href":"http://api.tvmaze.com/seasons/11"}}}]
+    const state = {
+      seasonDetails: '',
+    };
+    mutations.SET_EPISODE_DETAILS(state, episodeDetails);
+    expect(state.episodeDetails).toBe(episodeDetails);
+  } );
+  
+  it('SET_IS_VALID_ID mutation should set state.isValidID value to isValidID', () => {
+    const isValidID = [{"id":11,"url":"http://www.tvmaze.com/seasons/11/true-detective-season-1","number":1,"name":"","episodeOrder":8,"premiereDate":"2014-01-12","endDate":"2014-03-09","network":{"id":8,"name":"HBO","country":{"name":"United States","code":"US","timezone":"America/New_York"}},"webChannel":null,"image":{"medium":"http://static.tvmaze.com/uploads/images/medium_portrait/13/34831.jpg","original":"http://static.tvmaze.com/uploads/images/original_untouched/13/34831.jpg"},"summary":"<p>In 2012, two homicide investigators of the Louisiana State Police's Criminal Investigations Division - Rustin \"Rust\" Cohle and Martin \"Marty\" Hart - are summoned for questioning by detectives Maynard Gilbough and Thomas Papania over the Dora Lange murder investigation of 1995; they have not seen nor spoken to each other since an altercation concerning Martin's wife Maggie Hart over a decade prior. With many of the old files destroyed in Hurricane Rita, the two men are asked to recount the history of their working relationship, personal lives, and the Dora Lange murder investigation, as well as a series of other related individual cases as new evidence suggests that the perpetrator remains at large.</p>","_links":{"self":{"href":"http://api.tvmaze.com/seasons/11"}}}]
+    const state = {
+      isValidID: '',
+    };
+    mutations.SET_IS_VALID_ID(state, isValidID);
+    expect(state.isValidID).toBe(isValidID);
+  } );
+
 });

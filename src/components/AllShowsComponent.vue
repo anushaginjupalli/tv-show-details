@@ -19,7 +19,7 @@
 			<div v-if="genre === 'Top 50'" class="row">
 				<div
 					class="col-6 col-sm-4 col-md-3 col-lg-2"
-					v-for="show in topRatedShows"
+					v-for="show in allShowsList.slice(0, 49)"
 					:key="show.id"
 				>
 					<img
@@ -81,29 +81,28 @@
 					</div>
 		</div>
 		<div v-else>
-			<SearchResultsComponent
-				:Allshowsdetails="$store.state.searchshows"
-			></SearchResultsComponent>
+			<SearchResultsComponent></SearchResultsComponent>
 		</div>
 	</div>
 </template>
-<script>
-	/* eslint-disable */
-	import { mapState } from 'vuex';
+<script>	
+	import { mapState, mapGetters } from 'vuex';
 	import SearchComponent from './SearchComponent';
 	import SearchResultsComponent from './SearchResultsComponent';
 	export default {
 		data() {
 			return {
 				genre: '',
-				isValidGenre: false
+				isValidGenre: false,
+				genresList: ['Action', 'Crime', 'Horror', 'Romance', 'Drama', 'Sci-Fi', 'Top 50']
 			};
 		},
 		components: {
 			SearchComponent,
 			SearchResultsComponent,
 		},
-		computed: {...mapState(['showsListByGenre', 'topRatedShows', 'isSearch'])},
+		computed: {...mapState(['showsListByGenre', 'allShowsList']),
+			...mapGetters(['isSearch'])},
 		methods: {
 			//redirect to show details
 			goShowDetails(id) {
@@ -116,9 +115,7 @@
 		created: function() {
 			// check is valid genre or not		
 			this.genre = this.$route.params.Genre;			
-			if(this.genre === 'Action' || this.genre === 'Crime' 
-			|| this.genre === 'Horror' || this.genre=== 'Romance' 
-			|| this.genre === 'Drama' || this.genre === 'Sci-Fi' || this.genre === 'Top 50'){				
+			if(this.genresList.includes(this.genre)){				
 				this.isValidGenre = true
 			}
 			else{				

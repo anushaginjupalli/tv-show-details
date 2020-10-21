@@ -9,17 +9,25 @@ Vue.use(Vuex)
 const state = {
 	showsListByGenre: [],
 	allShowsList: [],
-	topRatedShows: [],
 	searchResultsList: [],	
-	isSearch: false,
+	showDetails: {},
 	searchValue: '',
+	showId: null,
 	searchShowList: [],	
-	detailsURL: '/shows'
+	seasonDetails: [],
+	episodeDetails: [],
+	noOfSeasons: null,
+	noOfEpisodes: null,
+	isValidID: true
 };
+const getters = {
+	isSearch: ( state ) => { return state.searchValue != '' }	
+}
 
 export default new Vuex.Store({
 	plugins: [createPersistedState()],
 	state,
+	getters,
 	actions,
 	mutations,
 	modules: {},

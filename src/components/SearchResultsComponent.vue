@@ -1,6 +1,6 @@
 <template>
 	<div class="container mb">
-		<div class="row" v-if="searchResultsList.length > 0">
+		<div class="row" v-if="searchShowList.length > 0">
 			<div
 				class="col-12 col-sm-4 col-md-3 col-lg-2"
 				v-for="show in searchResultsList"
@@ -41,37 +41,20 @@
 				</div>
 			</div>
 		</div>
-		<div v-else class="row">
-			<div class="col-12 col-sm-8 col-md-8 col-lg-9">
-			<h2 class="pd-t text-style text-color">No Results found</h2>
-			</div>
-			<div
-						class="col-12 col-sm-4 col-md-4 col-lg-3 text-left pd-t text-display"
-					>
-						<button type="button" @click="goToHome">Home</button>
-					</div>
+		<div v-else>			
+			<h2 class="pd-t text-style text-color">No Results found</h2>			
 		</div>
 	</div>
 </template>
 <script>
-import { mapActions, mapState } from 'vuex';	
+import {  mapState } from 'vuex';	
 	export default {
-		computed: {...mapState(['searchResultsList'])},
-		methods: {
-			...mapActions([
-				'getSearchValue'
-			]),
-			// redirect to show details
-			goShowDetails(id) {
-				this.getSearchValue(false)				
+		computed: {...mapState(['searchResultsList', 'searchShowList'])},				
+		methods: {			
+			goShowDetails(id) {			
 				this.$router.push('/showdetails/' + id);
-			},
-			// redirect to home page
-			goToHome() {
-				this.getSearchValue(false)
-				this.$router.push('/');
 			}
-		}
+		}			
 	};
 </script>
 <style scoped></style>

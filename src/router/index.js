@@ -22,7 +22,7 @@ const routes = [
 		component: AllShowsComponent,
 	},	
 	{
-		path: '/:catchAll(.*)',
+		path: '*',
 		redirect: '/',
 	},
 ];
