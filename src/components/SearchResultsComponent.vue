@@ -3,8 +3,8 @@
 		<div class="row" v-if="searchShowList.length > 0">
 			<div
 				class="col-12 col-sm-4 col-md-3 col-lg-2"
-				v-for="show in searchResultsList"
-				:key="show.id"
+				v-for="(show,index) in searchResultsList"
+				:key="index"
 			>
 				<div v-if="show.image && show.rating.average != null">
 					<img
